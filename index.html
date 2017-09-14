@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset='utf-8' />
+    <title></title>
+    <meta name='viewport' content='initial-scale=1,maximum-scale=1,user-scalable=no' />
+    <script src="https://d3js.org/d3.v4.min.js"></script>
+    <script src='https://npmcdn.com/@turf/turf/turf.min.js'></script>
+    <script src='https://api.tiles.mapbox.com/mapbox-gl-js/v0.40.0/mapbox-gl.js'></script>
+    <link href='https://api.tiles.mapbox.com/mapbox-gl-js/v0.40.0/mapbox-gl.css' rel='stylesheet' />
+    <style>
+        body { margin:0; padding:0; }
+        #map { position:absolute; top:0; bottom:0; width:100%; }
+    </style>
+</head>
+<body>
+
+<div id='map'></div>
+<script>
+mapboxgl.accessToken = 'pk.eyJ1IjoibmF2aWdhdGlvbm1hcCIsImEiOiJjajdpeXV5bmsxd3o1MndvMmI3YW9uN2MzIn0.j1jNy4T7WkerOCWEfL7iIA';
+var map = new mapboxgl.Map({
+    container: 'map', // container id
+    style: 'mapbox://styles/navigationmap/cj7iz82eb5u482rnkh5cyud3m', //hosted style id
+    center: [-122.41, 37.78], // starting position
+    zoom: 13 // starting zoom
+});
+
+var state = {
+  distance: 0,
+  speed: 50, //in ms interval
+  increment: 0.001,
+  point: [-122.41, 37.78],
+  pitch: 60,
+  bearing: 0,
+  length: 0,
+  zoom: 16
+}
+
+var routeLine;
+var nextPoint;
+
+var routeStyleSimple = {
+  "id": "route",
+  "type": "line",
+  "filter": ["==", "type", "route"],
+  "source": "route",
+  "paint": {
+    "line-color": "#000fff",
+    "line-width": 5
+  }
+};
+
+var routeStyleTraffic = {
+  "id": "routeTraffic",
+  "after": "road-label-small",
+  "type": "line",
+  "filter": ["==", "type", "traffic"],
+  "source": "route",
+  "layout": {
+    "line-cap": "round"
+  },
+  "paint": {
+    "line-color": {
+      "property": "speed",
+      "type": "exponential",
+      "stops": [
+        [10, "#991515"],
+        [20, "#E82D2D"],
+        [40, "#EBC534"],
+        [90, "#2FAF1E"]
+      ]
+    },
+    "line-width": 10
+  }
+};
+
+var pointerStyleBg = {
+  "id": "pointerBg",
+  "type": "circle",
+  "source": "point",
+  "paint": {
+    "circle-color": "#fff",
+    "circle-opacity": 0.58,
+    "circle-radius": 20
+  }
+};
+
+var pointerStyle = {
+  "id": "pointer",
+  "type": "circle",
+  "source": "point",
+  "paint": {
+    "circle-color": "#06f",
+    "circle-opacity": 1,
+    "circle-radius": 8
+  }
+};
+
+
+map.on('load', ()=> {
+  fetch('./data/route.geojson?' + Math.random())
+  .then(response => response.json())
+  .then(json => {
+
+//             const routeSrc = json.routes[0];
+    routeLine = json.features[0];
+    state.length = turf.lineDistance(routeLine, 'kilometers');
+    state.point = turf.along(routeLine, state.distance, 'kilometers');
+
+    map.addSource("route", { type: "geojson", data: json });
+    map.addLayer(routeStyleTraffic);
+
+    map.addSource("point", { type: "geojson", data: {type: "FeatureCollection", features: [state.point]} });
+    map.addLayer(pointerStyleBg);
+    map.addLayer(pointerStyle);
+
+    console.log(map.getStyle());
+
+
+    setInterval(() => {
+      state.distance += state.increment;
+      if((state.distance-state.increment) > state.length) { state.distance = 0; }
+      state.point = turf.along(routeLine, state.distance, 'kilometers');
+
+      state.bearing = turf.bearing(state.point, turf.along(routeLine, (state.distance+state.increment), 'kilometers'));
+
+//      map.setPitch
+
+      map.easeTo({
+        center: state.point.geometry.coordinates,
+        bearing: state.bearing,
+        pitch: state.pitch,
+        zoom: state.zoom
+      });
+
+      map.getSource("point").setData({type: "FeatureCollection", features: [state.point]});
+
+
+    }, state.speed);
+
+
+ });
+
+
+
+
+})
+
+//request for example
+//https://api.mapbox.com/directions/v5/mapbox/driving-traffic/-122.381405%2C37.738277%3B-122.45771097983936%2C37.78540378184813.json?geometries=polyline&alternatives=true&steps=true&overview=full&access_token=pk.eyJ1IjoibWFwYm94IiwiYSI6ImNpejY4M29iazA2Z2gycXA4N2pmbDZmangifQ.-g_vE53SD2WrJ6tFX7QHmA
+
+</script>
+
+
+</body>
+</html>
