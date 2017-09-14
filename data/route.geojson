@@ -16,6 +16,178 @@
 { "type": "Feature", "properties": { "type": "traffic", "speed": 17, "id": 11 }, "geometry": { "type": "LineString", "coordinates": [ [ -122.435073488572812, 37.774396836557067 ], [ -122.435726, 37.774314 ], [ -122.435961, 37.774284 ], [ -122.435996, 37.77428 ], [ -122.437246, 37.77412 ], [ -122.437365, 37.774105 ], [ -122.437584, 37.774077 ], [ -122.437676, 37.774066 ], [ -122.43797, 37.774028 ], [ -122.438138, 37.774007 ], [ -122.438998, 37.773897 ], [ -122.439196, 37.773872 ], [ -122.439297, 37.773859 ], [ -122.440299, 37.773732 ], [ -122.440544, 37.7737 ], [ -122.440775, 37.773669 ], [ -122.440935, 37.773642 ], [ -122.441066, 37.773616 ], [ -122.44258, 37.77342 ], [ -122.442674, 37.773409 ], [ -122.443103455043186, 37.773354140581581 ] ] } },
 { "type": "Feature", "properties": { "type": "traffic", "speed": 33, "id": 12 }, "geometry": { "type": "LineString", "coordinates": [ [ -122.443103455043186, 37.773354140581581 ], [ -122.444224, 37.773211 ], [ -122.444295, 37.773202 ], [ -122.445226, 37.773084 ], [ -122.445771, 37.773014 ], [ -122.445924, 37.772995 ], [ -122.445943, 37.773088 ], [ -122.446007, 37.773407 ], [ -122.446102, 37.773876 ], [ -122.446126, 37.773946 ], [ -122.446148, 37.774014 ], [ -122.446308, 37.774803 ], [ -122.446311, 37.774878 ], [ -122.446319, 37.774952 ], [ -122.446439, 37.775546 ], [ -122.446477, 37.775731 ], [ -122.446493, 37.77581 ], [ -122.44651, 37.775895 ], [ -122.446637739133138, 37.776528466578405 ] ] } },
 { "type": "Feature", "properties": { "type": "traffic", "speed": 19, "id": 13 }, "geometry": { "type": "LineString", "coordinates": [ [ -122.446637739133138, 37.776528466578405 ], [ -122.446681, 37.776743 ], [ -122.446851, 37.777584 ], [ -122.446869, 37.777674 ], [ -122.446888, 37.777767 ], [ -122.447041, 37.778527 ], [ -122.447062, 37.778631 ], [ -122.4472, 37.778614 ], [ -122.447549, 37.77857 ], [ -122.448019, 37.77851 ], [ -122.448904, 37.778397 ], [ -122.449225, 37.778357 ], [ -122.449789, 37.778285 ], [ -122.44987, 37.778279 ], [ -122.450348, 37.778244 ], [ -122.450602, 37.778217 ], [ -122.450684, 37.778207 ], [ -122.4508, 37.778192 ], [ -122.450903, 37.778179 ], [ -122.451568, 37.778096 ], [ -122.451804, 37.778065 ], [ -122.452454, 37.777981 ], [ -122.452554, 37.777969 ], [ -122.453287, 37.777874 ], [ -122.453333, 37.777864 ], [ -122.453407, 37.777836 ], [ -122.453473, 37.777831 ], [ -122.453538, 37.777823 ], [ -122.454355, 37.777719 ], [ -122.455233, 37.777607 ], [ -122.455236, 37.777713 ], [ -122.455279, 37.777952 ], [ -122.45546, 37.778824 ], [ -122.455569, 37.779361 ], [ -122.455586, 37.779435 ], [ -122.455604, 37.779505 ], [ -122.455623, 37.779564 ], [ -122.455642, 37.779614 ], [ -122.455664, 37.779667 ], [ -122.455691, 37.779723 ], [ -122.455725, 37.779779 ], [ -122.455759, 37.779825 ], [ -122.455859, 37.779946 ], [ -122.455886479677289, 37.779979821141268 ] ] } },
-{ "type": "Feature", "properties": { "type": "traffic", "speed": 46, "id": 14 }, "geometry": { "type": "LineString", "coordinates": [ [ -122.455886479677289, 37.779979821141268 ], [ -122.455937, 37.780042 ], [ -122.455976, 37.780091 ], [ -122.456017, 37.780144 ], [ -122.45604, 37.780179 ], [ -122.456045, 37.780187 ], [ -122.456056, 37.780206 ], [ -122.456084, 37.780275 ], [ -122.456093, 37.780299 ], [ -122.456118111611261, 37.780422521979716 ] ] } }
+{ "type": "Feature", "properties": { "type": "traffic", "speed": 46, "id": 14 }, "geometry": { "type": "LineString", "coordinates": [ [ -122.455886479677289, 37.779979821141268 ], [ -122.455937, 37.780042 ], [ -122.455976, 37.780091 ], [ -122.456017, 37.780144 ], [ -122.45604, 37.780179 ], [ -122.456045, 37.780187 ], [ -122.456056, 37.780206 ], [ -122.456084, 37.780275 ], [ -122.456093, 37.780299 ], [ -122.456118111611261, 37.780422521979716 ] ] } },
+
+{
+  "type": "Feature",
+  "properties": {
+    "type": "maneuver",
+    "name": "Cesar Chavez Street",
+    "arrow": "straight",
+    "instruction": "Turn left onto Cesar Chavez Street"
+  },
+  "geometry": {
+    "type": "Point",
+    "coordinates": [-122.397284, 37.749695]
+  }
+},
+{
+  "type": "Feature",
+  "properties": {
+    "type": "maneuver",
+    "name": "US 101",
+    "arrow": "slight-right",
+    "instruction": "Take the ramp on the right towards US 101"
+  },
+  "geometry": {
+    "type": "Point",
+    "coordinates": [-122.402971, 37.749536]
+  }
+},
+{
+  "type": "Feature",
+  "properties": {
+    "type": "maneuver",
+    "name": "US 101",
+    "arrow": "slight-left",
+    "instruction": "Merge left onto US 101"
+  },
+  "geometry": {
+    "type": "Point",
+    "coordinates": [-122.402851, 37.753336]
+  }
+},
+{
+  "type": "Feature",
+  "properties": {
+    "type": "maneuver",
+    "name": "US 101",
+    "arrow": "slight-left",
+    "instruction": "Keep left at the fork onto US 101"
+  },
+  "geometry": {
+    "type": "Point",
+    "coordinates": [-122.404888, 37.764385]
+  }
+},
+{
+  "type": "Feature",
+  "properties": {
+    "type": "maneuver",
+    "name": "Octavia Boulevard",
+    "arrow": "straight",
+    "instruction": "Continue straight towards Octavia Boulevard"
+  },
+  "geometry": {
+    "type": "Point",
+    "coordinates": [-122.415395, 37.769616]
+  }
+},
+{
+  "type": "Feature",
+  "properties": {
+    "type": "maneuver",
+    "name": "Octavia Boulevard",
+    "arrow": "straight",
+    "instruction": "Continue straight towards Octavia Boulevard"
+  },
+  "geometry": {
+    "type": "Point",
+    "coordinates": [-122.423322, 37.771858]
+  }
+},
+{
+  "type": "Feature",
+  "properties": {
+    "type": "maneuver",
+    "name": "Fell Street",
+    "arrow": "left",
+    "instruction": "Turn left onto Fell Street"
+  },
+  "geometry": {
+    "type": "Point",
+    "coordinates": [-122.424344, 37.775763]
+  }
+},
+{
+  "type": "Feature",
+  "properties": {
+    "type": "maneuver",
+    "name": "Masonic Avenue",
+    "arrow": "right",
+    "instruction": "Turn right onto Masonic Avenue"
+  },
+  "geometry": {
+    "type": "Point",
+    "coordinates": [-122.445924, 37.772995]
+  }
+},
+{
+  "type": "Feature",
+  "properties": {
+    "type": "maneuver",
+    "name": "Turk Boulevard",
+    "arrow": "left",
+    "instruction": "Turn left onto Turk Boulevard"
+  },
+  "geometry": {
+    "type": "Point",
+    "coordinates": [-122.447062, 37.778631]
+  }
+},
+{
+  "type": "Feature",
+  "properties": {
+    "type": "maneuver",
+    "name": "Stanyan Street",
+    "arrow": "right",
+    "instruction": "Turn right onto Stanyan Street"
+  },
+  "geometry": {
+    "type": "Point",
+    "coordinates": [-122.455233, 37.777607]
+  }
+},
+{
+  "type": "Feature",
+  "properties": {
+    "type": "maneuver",
+    "name": "Geary Boulevard",
+    "arrow": "left",
+    "instruction": "Turn left onto Geary Boulevard"
+  },
+  "geometry": {
+    "type": "Point",
+    "coordinates": [-122.456344, 37.781451]
+  }
+},
+{
+  "type": "Feature",
+  "properties": {
+    "type": "maneuver",
+    "name": "Palm Avenue",
+    "arrow": "right",
+    "instruction": "Turn right onto Palm Avenue"
+  },
+  "geometry": {
+    "type": "Point",
+    "coordinates": [-122.457757, 37.781387]
+  }
+},
+{
+  "type": "Feature",
+  "properties": {
+    "type": "maneuver",
+    "name": "Palm Avenue",
+    "arrow": "end",
+    "instruction": "You have arrived at your destination, on the right"
+  },
+  "geometry": {
+    "type": "Point",
+    "coordinates": [-122.458041, 37.78539]
+  }
+}
+
+
 ]
 }

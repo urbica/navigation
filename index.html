@@ -11,10 +11,11 @@
     <style>
         body { margin:0; padding:0; }
         #map { position:absolute; top:0; bottom:0; width:100%; }
+        #animationControl { position:absolute; top:10px; left:10px; padding: 4px; line-height: 32px; color: #222; background: #fff; z-index: 20000; }
     </style>
 </head>
 <body>
-
+<div id='animationControl'></div>
 <div id='map'></div>
 <script>
 mapboxgl.accessToken = 'pk.eyJ1IjoibmF2aWdhdGlvbm1hcCIsImEiOiJjajdpeXV5bmsxd3o1MndvMmI3YW9uN2MzIn0.j1jNy4T7WkerOCWEfL7iIA';
@@ -26,6 +27,7 @@ var map = new mapboxgl.Map({
 });
 
 var state = {
+  animation: false,
   distance: 0,
   speed: 50, //in ms interval
   increment: 0.001,
@@ -36,8 +38,10 @@ var state = {
   zoom: 16
 }
 
-var routeLine;
-var nextPoint;
+var routeLine, nextPoint, maneuverPoints;
+var interval;
+
+var animationControl = d3.select("#animationControl");
 
 var routeStyleSimple = {
   "id": "route",
@@ -96,11 +100,60 @@ var pointerStyle = {
   }
 };
 
+var maneuverStyle = {
+  "id": "maneuver",
+  "type": "circle",
+  "source": "route",
+  "filter": ["==", "type", "maneuver"],
+  "paint": {
+    "circle-color": "#06f",
+    "circle-opacity": 1,
+    "circle-radius": 4
+  }
+};
+
+toggleAnimation = () => {
+  if(!state.animation) {
+    interval = setInterval(moveNext, state.speed);
+    state.animation = true;
+    animationControl.text('Stop');
+  } else {
+    clearInterval(interval);
+    state.animation = false;
+    animationControl.text('Play');
+  }
+}
+
+moveNext = () => {
+
+  state.distance += state.increment;
+  if((state.distance-state.increment) > state.length) { state.distance = 0; }
+  state.point = turf.along(routeLine, state.distance, 'kilometers');
+
+  state.bearing = turf.bearing(state.point, turf.along(routeLine, (state.distance+state.increment), 'kilometers'));
+
+  //      map.setPitch
+  map.easeTo({
+      center: state.point.geometry.coordinates,
+      bearing: state.bearing,
+      pitch: state.pitch,
+      zoom: state.zoom
+  });
+
+  map.getSource("point").setData({type: "FeatureCollection", features: [state.point]});
+
+}
+
+map.on('click', function(e) {
+     // set bbox as 5px reactangle area around clicked point
+     var bbox = [[e.point.x - 5, e.point.y - 5], [e.point.x + 5, e.point.y + 5]];
+     var features = map.queryRenderedFeatures(bbox, { layers: ['maneuver'] });
+     console.log(features);
+  });
 
 map.on('load', ()=> {
-  fetch('./data/route.geojson?' + Math.random())
-  .then(response => response.json())
-  .then(json => {
+
+  d3.json('./data/route.geojson?' + Math.random(), json => {
 
 //             const routeSrc = json.routes[0];
     routeLine = json.features[0];
@@ -113,30 +166,11 @@ map.on('load', ()=> {
     map.addSource("point", { type: "geojson", data: {type: "FeatureCollection", features: [state.point]} });
     map.addLayer(pointerStyleBg);
     map.addLayer(pointerStyle);
+    map.addLayer(maneuverStyle);
 
-    console.log(map.getStyle());
+    animationControl.text('Play');
+    animationControl.on('click', toggleAnimation); //bind
 
-
-    setInterval(() => {
-      state.distance += state.increment;
-      if((state.distance-state.increment) > state.length) { state.distance = 0; }
-      state.point = turf.along(routeLine, state.distance, 'kilometers');
-
-      state.bearing = turf.bearing(state.point, turf.along(routeLine, (state.distance+state.increment), 'kilometers'));
-
-//      map.setPitch
-
-      map.easeTo({
-        center: state.point.geometry.coordinates,
-        bearing: state.bearing,
-        pitch: state.pitch,
-        zoom: state.zoom
-      });
-
-      map.getSource("point").setData({type: "FeatureCollection", features: [state.point]});
-
-
-    }, state.speed);
 
 
  });
