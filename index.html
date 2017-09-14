@@ -246,12 +246,24 @@ map.on('load', ()=> {
     state.point = turf.along(routeLine, state.distance, 'kilometers');
 
     map.addSource("route", { type: "geojson", data: json });
-    map.addLayer(routeStyleTraffic);
-
     map.addSource("point", { type: "geojson", data: {type: "FeatureCollection", features: [state.point]} });
-    map.addLayer(pointerStyleBg);
+    //map.addLayer(maneuverStyle);
+
+    var style = map.getStyle();
+    console.log(style);
+
+    var afterId = style.layers.length;
+    style.layers.forEach((l, i) => {
+    //  console.log(l.id);
+      if (l.id=='road-label-small') afterId=i;
+       });
+    console.log(afterId);
+    style.layers.splice(afterId, 0, pointerStyleBg);
+    style.layers.splice(afterId, 0, routeStyleTraffic);
+
+    map.setStyle(style);
+
     map.addLayer(pointerStyle);
-    map.addLayer(maneuverStyle);
 
     animationControl.attr("class", "play");
     animationControl.on('click', toggleAnimation); //bind
