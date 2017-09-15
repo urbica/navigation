@@ -11,7 +11,6 @@
     <style>
         body { margin:0; padding:0; overflow: hidden; color: #0036FF; font-family: -apple-system, BlinkMacSystemFont, sans-serif; }
         #map { position:absolute; top:0; bottom:-300px; width:100%; }
-        #mapContainer { position:absolute; top:0; bottom: 0; width:100%; overflow: hidden; }
         #animationControl { opacity: 0.5; position:absolute; top:0px; left:0px; padding: 4px; width: 60px; height: 60px; line-height: 40px; z-index: 20000; cursor: pointer; }
         .play { background: url('img/play.svg') center center no-repeat; }
         .stop { background: url('img/stop.svg') center center no-repeat; }
@@ -47,9 +46,7 @@
   <div id='speedIndicateSpeed'>58</div>
   <div id='speedIndicateMeasure'>km/h</div>
 </div>
-  <div id='mapContainer'>
-    <div id='map'></div>
-  </div>
+  <div id='map'></div>
 
 <script>
 mapboxgl.accessToken = 'pk.eyJ1IjoibmF2aWdhdGlvbm1hcCIsImEiOiJjajdpeXV5bmsxd3o1MndvMmI3YW9uN2MzIn0.j1jNy4T7WkerOCWEfL7iIA';
