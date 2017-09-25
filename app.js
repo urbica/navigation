@@ -234,7 +234,7 @@ map.on('load', ()=> {
  });
 })
 
-var labelLayers = ['road-label-large', 'road-label-medium', 'road-label-small'];
+var labelLayers = ['place-neighbourhood', 'place-suburb', 'road-label-large', 'road-label-medium', 'road-label-small'];
 var labelsVisibility = false;
 
 
