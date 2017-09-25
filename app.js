@@ -2,7 +2,7 @@ mapboxgl.accessToken = 'pk.eyJ1IjoibmF2aWdhdGlvbm1hcCIsImEiOiJjajdpeXV5bmsxd3o1M
 var map = new mapboxgl.Map({
     container: 'map', // container id
     style: 'mapbox://styles/navigationmap/cj8072a1l7hdv2rt58nk58atf', //hosted style id
-    center: [-122.429704, 37.735928], // starting position
+    center: [-122.417611, 37.735928], // starting position
     zoom: 11.5,
     pitch: 0,
     bearing: 0,
@@ -15,7 +15,7 @@ var state = {
   distance: 0,
   speed: 50, //in ms interval
   increment: 0.002,
-  point: [-122.41, 37.78],
+  point: [-122.417611, 37.78],
   pitch: 70,
   bearing: 0,
   length: 0,
