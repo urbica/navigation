@@ -242,7 +242,7 @@ map.on('load', ()=> {
  });
 });
 
-var labelLayers = ['road-label-large', 'road-label-medium', 'road-label-small', 'Parking_txt', 'housenum-label','rail-label-major','rail-label-minor'];
+var labelLayers = ['Parking_txt','road-label-large', 'road-label-medium', 'road-label-small', 'Parking_txt', 'housenum-label','rail-label-major','rail-label-minor'];
 var trafficLayers = ['traffic heavy main','traffic severe main','traffic moderate main','traffic low main','traffic heavy pr','traffic severe pr','traffic moderate pr','traffic low pr','traffic heavy other','traffic severe other','traffic moderate other','traffic low other','traffic heavy','traffic severe','traffic moderate','traffic low'];
 
 var labelsVisibility = false;
