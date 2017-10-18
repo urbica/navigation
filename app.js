@@ -231,11 +231,11 @@ map.on('load', ()=> {
     //starting
     toggleLabels();
 
-    // trafficLayers.forEach(l => {
-    //   map.setLayoutProperty(l, "visibility", labelsVisibility ? 'visible' : 'none');
-    //   map.setPaintProperty(l, "line-opacity", 0);
-    // });
-    //
+    trafficLayers.forEach(l => {
+      map.setLayoutProperty(l, "visibility", labelsVisibility ? 'visible' : 'none');
+      map.setPaintProperty(l, "line-opacity", 0);
+    });
+
     // var lrs = map.getStyle();
     // lrs.layers.forEach(l=>{ console.log(l.id);})
 
@@ -243,11 +243,9 @@ map.on('load', ()=> {
 });
 
 var labelLayers = ['road-label-large', 'road-label-medium', 'road-label-small', 'Parking_txt', 'housenum-label','rail-label-major','rail-label-minor'];
-var trafficLayers = ['traffic low', 'traffic heavy', 'traffic moderate', 'traffic severe', 'traffic case copy', 'traffic case'];
+var trafficLayers = ['traffic heavy main','traffic severe main','traffic moderate main','traffic low main','traffic heavy pr','traffic severe pr','traffic moderate pr','traffic low pr','traffic heavy other','traffic severe other','traffic moderate other','traffic low other','traffic heavy','traffic severe','traffic moderate','traffic low'];
 
 var labelsVisibility = false;
-
-
 
 
 
@@ -259,9 +257,9 @@ toggleLabels = () => {
     map.setLayoutProperty(l, "visibility", labelsVisibility ? 'visible' : 'none');
   });
 
-  // trafficLayers.forEach(l => {
-  //   map.setPaintProperty(l, "line-opacity", labelsVisibility ? 1 : 0);
-  // });
+  trafficLayers.forEach(l => {
+    map.setPaintProperty(l, "line-opacity", labelsVisibility ? 1 : 0);
+  });
 
 
   labelsVisibility = !labelsVisibility;
