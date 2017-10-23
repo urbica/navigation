@@ -1,7 +1,7 @@
 mapboxgl.accessToken = 'pk.eyJ1IjoibmF2aWdhdGlvbm1hcCIsImEiOiJjajdpeXV5bmsxd3o1MndvMmI3YW9uN2MzIn0.j1jNy4T7WkerOCWEfL7iIA';
 var map = new mapboxgl.Map({
     container: 'map', // container id
-    style: 'mapbox://styles/navigationmap/cj8vify73fb5e2rqo15hbx2q1', //hosted style id
+    style: 'mapbox://styles/navigationmap/cj8yhmy1qartf2rn61rzc7j01', //hosted style id
     center: [-122.417611, 37.735928], // starting position
     zoom: 11.5,
     pitch: 0,
@@ -211,6 +211,9 @@ map.on('load', ()=> {
     map.addLayer(maneuverStyle);
     var style = map.getStyle();
     console.log(style);
+
+    style.layers.forEach(l=>{ console.log(l.id);});
+
     var afterId = style.layers.length;
     style.layers.forEach((l, i) => {
     //  console.log(l.id);
@@ -243,7 +246,11 @@ map.on('load', ()=> {
 });
 
 var labelLayers = ['Parking_txt','road-label-large', 'road-label-medium', 'road-label-small', 'Parking_txt', 'housenum-label','rail-label-major','rail-label-minor'];
-var trafficLayers = ['traffic heavy main','traffic severe main','traffic moderate main','traffic low main','traffic heavy pr','traffic severe pr','traffic moderate pr','traffic low pr','traffic heavy other','traffic severe other','traffic moderate other','traffic low other','traffic heavy','traffic severe','traffic moderate','traffic low'];
+var trafficLayers = ['traffic heavy main','traffic severe main','traffic moderate main','traffic low main','traffic heavy pr',
+  'traffic severe pr','traffic moderate pr','traffic low pr','traffic heavy other',
+  'traffic severe other','traffic moderate other','traffic low other','traffic heavy',
+  'traffic severe','traffic moderate','traffic low',
+  'traffic main case', 'traffic pr case', 'traffic other case', 'traffic case'];
 
 var labelsVisibility = false;
 
