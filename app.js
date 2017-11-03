@@ -1,7 +1,7 @@
 mapboxgl.accessToken = 'pk.eyJ1IjoibmF2aWdhdGlvbm1hcCIsImEiOiJjajdpeXV5bmsxd3o1MndvMmI3YW9uN2MzIn0.j1jNy4T7WkerOCWEfL7iIA';
 var map = new mapboxgl.Map({
     container: 'map', // container id
-    style: 'mapbox://styles/navigationmap/cj8yhmy1qartf2rn61rzc7j01', //hosted style id
+    style: 'mapbox://styles/navigationmap/cj9cxcsu26ios2so348i9fih8', //hosted style id
     center: [-122.417611, 37.735928], // starting position
     zoom: 11.5,
     pitch: 0,
@@ -250,7 +250,7 @@ var trafficLayers = ['traffic heavy main','traffic severe main','traffic moderat
   'traffic severe pr','traffic moderate pr','traffic low pr','traffic heavy other',
   'traffic severe other','traffic moderate other','traffic low other','traffic heavy',
   'traffic severe','traffic moderate','traffic low',
-  'traffic main case', 'traffic pr case', 'traffic other case', 'traffic case'];
+  'traffic main small', 'traffic serve small', 'traffic moderate small', 'traffic low small'];
 
 var labelsVisibility = false;
 
