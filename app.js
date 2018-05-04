@@ -1,7 +1,7 @@
 mapboxgl.accessToken = 'pk.eyJ1IjoibmF2aWdhdGlvbm1hcCIsImEiOiJjajdpeXV5bmsxd3o1MndvMmI3YW9uN2MzIn0.j1jNy4T7WkerOCWEfL7iIA';
 var map = new mapboxgl.Map({
     container: 'map', // container id
-    style: 'mapbox://styles/navigationmap/cje7a744nb0m82sn3yu0bpwqr', //hosted style id
+    style: 'mapbox://styles/navigationmap/cjcltpjv50w2j2rp4l0pme5qg', //hosted style id
     center: [-122.417611, 37.735928], // starting position
     zoom: 11.5,
     pitch: 0,
